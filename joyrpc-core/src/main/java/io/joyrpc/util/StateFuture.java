@@ -127,6 +127,7 @@ public class StateFuture<T> {
         return result;
     }
 
+    // 加载之前要做的事情： beforeOpenSupplier
     public CompletableFuture<Void> newBeforeOpenFuture() {
         CompletableFuture<Void> result = beforeOpenSupplier == null ? null : beforeOpenSupplier.get();
         result = result == null ? CompletableFuture.completedFuture(null) : result;

@@ -278,7 +278,7 @@ public interface Plugin {
     ExtensionPoint<Json, String> JSON = new ExtensionPointLazy<>(Json.class);
 
     /**
-     * JSON提供者
+     * xml提供者
      */
     ExtensionPoint<Xml, String> XML = new ExtensionPointLazy<>(Xml.class);
 

@@ -164,6 +164,8 @@ public class ProviderConfig<T> extends AbstractInterfaceConfig implements Serial
     /**
      * 创建服务并且开启
      *
+     * 服务端的启动流程也被分为了两部分：服务端的创建流程与服务端的开启流程
+     *
      * @return
      */
     public CompletableFuture<Void> exportAndOpen() {

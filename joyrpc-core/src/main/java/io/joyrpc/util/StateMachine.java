@@ -112,6 +112,7 @@ public class StateMachine<T, S extends StateTransition, M extends StateControlle
     public CompletableFuture<T> open(final Runnable runnable, final EventHandler<StateEvent> handler) {
         if (state.tryOpening() == SUCCESS) {
             final CompletableFuture<T> future = stateFuture.newOpenFuture();
+            //需要debug看一下 M类型
             final M cc = getOpenController();
             //在controller赋值后再触发事件
             publish(StateEvent.START_OPEN, null, handler);
@@ -128,7 +129,7 @@ public class StateMachine<T, S extends StateTransition, M extends StateControlle
                     //加载异常先关闭服务，防止事件触发判断状态还是OPENED
                     onFailedOpen(t, handler, future);
                 } else {
-                    //打开
+                    //打开   cc.open()才是真正的
                     try {
                         cc.open().whenComplete((v, e) -> {
                             if (stateFuture.getOpenFuture() != future || e == null && state.tryOpened() != SUCCESS) {

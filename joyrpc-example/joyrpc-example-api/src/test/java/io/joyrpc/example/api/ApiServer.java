@@ -43,7 +43,7 @@ public class ApiServer {
         providerConfig.setInterfaceClazz(DemoService.class.getName());
         providerConfig.setRef(demoService);
         providerConfig.setAlias("joyrpc-demo");
-        //providerConfig.setRegistry(new RegistryConfig("broadcast"));
+//        providerConfig.setRegistry(new RegistryConfig("broadcast"));
         providerConfig.setRegistry(new RegistryConfig("memory"));
 
         providerConfig.exportAndOpen().whenComplete((v, t) -> {
